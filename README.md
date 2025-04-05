@@ -44,3 +44,95 @@
 | DS3231SN#               | [Mouser](https://ro.mouser.com/ProductDetail/Analog-Devices-Maxim-Integrated/DS3231SN?qs=1eQvB6Dk1vhUlr8%2FOrV0Fw%3D%3D)                                                           | [Datasheet](https://ro.mouser.com/datasheet/2/609/DS3231-3421123.pdf)|
 | MAX17048G+T10               | [Mouser](https://ro.mouser.com/ProductDetail/Analog-Devices-Maxim-Integrated/MAX17048G%2bT10?qs=D7PJwyCwLAoGnnn8jEPRBQ%3D%3D)                                                           | [Datasheet](https://ro.mouser.com/datasheet/2/609/MAX17048_MAX17049-3469099.pdf)|
 ---
+# Functionalitatea Hardware
+
+**Sursa de Alimentare si Energie:**
+- **USB cu ESD:** Protectie la alimentare si transfer de date.
+- **Circuit de Incarcare Li-Po - MCP73831:** Managementul controlat al incarcarii pentru acumulatorul de 1800 mAh.
+- **Baterie Li-Po & LDO Voltage Regulator:** Stabilizeaza tensiunea la 3.3V pentru componentele sistemului.
+
+**Microcontroller & Interfete:**
+- **ESP32-C6:**
+    - **SPI:** Interconecteaza memoria NOR Flash, cardul SD și displayul e-paper.
+    - **I2C:** Faciliteaza comunicarea cu RTC DS3231, senzorul BME688 și modulele aditionale.
+    - **UART:** Dedicat pentru debugging și comunicatii seriale.
+    - **GPIO:** Utilizat pentru butoane si puncte de testare.
+
+**Module de Stocare & Afisare:**
+- **Memorie NOR Flash (SPI):** Stocare eficienta pentru firmware si date operationale.
+- **Card SD (SPI):** Ofera capacitate de stocare suplimentara.
+- **E-Paper Display:** Asigura vizualizari precise cu consum energetic minim, operat prin SPI.
+
+**Module Suplimentare & Senzori:**
+- **RTC DS3231 (I2C):** Furnizeaza timpul real sistemului.
+- **Senzor BME688 (I2C):** Monitorizeaza temperatura, umiditatea, presiunea si calitatea aerului.
+- **Conector Qwiic/Stemma QT (I2C):** Faciliteaza integrarea modulelor aditionale.
+- **Test Pads & Butoane (GPIO):** Suporta diagnosticarea si interactiunea directa.
+
+**Optimizare Energetica:**
+- **Mod Low-Power al ESP32-C6:** Optimizeaza consumul prin ajustarea dinamica a frecventei si ciclurilor active.
+- **Stabilitate prin LDO:** Garanteaza o tensiune stabila de 3.3V.
+- **Componente SMD (ex: capsula 0402):** Reduce consumul energetic prin dimensiuni compacte si eficienta ridicata.
+
+---
+
+# ESP32-C6 Pin Mapping
+
+| Nume | GPIO        | Utilizare                                      | Observații                                                                                                                      |
+|------|-------------|------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------|
+| 3V3  | 3V3         | Alimentare 3.3V                                | Sursa de tensiune pentru ESP32-C6 și componente logice.                                                                         |
+| SCK (SPI) | IO6         | Clock pentru SPI                               | Asigură semnalul de ceas pentru transferuri rapide.                                                                             |
+| MOSI (SPI) | IO7         | Transmitere date SPI                           | Trimite date către NOR Flash, SD Card și E-Paper.                                                                               |
+| MISO (SPI) | IO2         | Recepție date SPI                              | Primește date de la dispozitivele SPI.                                                                                          |
+| FLASH_CS | IO11        | Selectare SPI pentru NOR Flash                 | Selectează memoria NOR Flash pe magistrala SPI.                                                                                 |
+| EPD_CS | IO10        | Selectare SPI pentru E-Paper                   | Selectează afișajul e-paper.                                                                                                    |
+| SDA (I2C) | IO21        | Linie de date I2C                              | Conectează RTC DS3231, senzorul BME688 și conectorul Qwiic/Stemma QT.                                                           |
+| SCL (I2C) | IO22        | Linie de ceas I2C                              | Sincronizează comunicația I2C.                                                                                                  |
+| TX (UART) | TXD0/GPIO16 | Transmitere date UART                          | Utilizat pentru debug și comunicații seriale.                                                                                   |
+| RX (UART) | RXD0/GPIO17 | Recepție date UART                             | Utilizat pentru debug și comunicații seriale.                                                                                   |
+| Buton Reset | EN          | Resetare ESP32-C6                              | Pin dedicat pentru resetul sistemului.                                                                                          |
+| Buton Boot | IO9         | Intrare în bootloader                          | Pin dedicat pentru a intra în modul boot.                                                                                       |
+| Buton Change | IO15        | Schimbare mod operare                          | Permite comutarea între modurile de funcționare.                                                                                |
+| EPD DC | IO5         | Data/Command pentru E-Paper                    | Disting între semnal de comandă și semnal de date pentru afișaj.                                                                |
+| EPD RST | IO23        | Resetare E-Paper                               | Resetează afișajul e-paper când este necesar.                                                                                   |
+| EPD BUSY | IO3         | Indicator stare E-Paper                        | Semnal care indică dacă afișajul este ocupat.                                                                                   |
+| INT_RTC | IO0         | Semnal de întrerupere de la RTC (DS3231)        | Activează microcontrolerul.                                                                                                     |
+| 32KHZ | IO1         | Semnal de ceas 32 kHz                 | Linie de oscilație pentru DS3231 sau alt modul (nu intră direct în ESP).                                                        |
+| SS_SD| IO4         | Chip Select pentru card SD (SPI)                | Selectează cardul SD pe magistrala SPI.                                                                                         |
+| USB_D- | IO12        | Linie diferențială USB (minus)                  | Conexiune la portul USB.                                                                                                        |
+| USB_D+ | IO13        | Linie diferențială USB (plus)                   | Conexiune la portul USB.                                                                                                        |
+| RTC_RST | IO18        | Reset extern/semnal RTC                         | Folosit pentru a reseta ceasul de timp real                                                                                     |
+| I2C_PW | IO19        | Linia de alimentare / enable pentru I2C         | Activează/dezactivează alimentarea senzorilor I2C pentru economisirea energiei.                                                 |
+| EPD_3V3_C | IO20        | Linie de alimentare 3.3V pentru E-Paper         | Această linie furnizează 3.3V specifice afișajului e-paper, separate de alimentarea principală, pentru stabilitatea semnalelor. |
+
+---
+## Motivatie
+
+- **SPI** (SCK, MOSI, MISO, CS-uri) asigura transferul accelerat pentru memoria externa (Flash), cardul SD si ecranul e-paper.
+- **I2C** (SDA, SCL) integreaza senzorii (RTC, BME688) si conectorul Qwiic, permitand utilizarea comuna a magistralei cu impact redus asupra consumului energetic.
+- **UART** (TX, RX) este implementat pentru scopuri de debugging.
+- **GPIO suplimentare** (butoane, test pads) ofera suport pentru controlul manual si procesele de diagnosticare.
+
+---
+
+## Pasii de Implementare
+
+- **Schematic:** Am proiectat schematicul in concordanta cu specificatiile proiectului.
+- **Redesenarea PCB-ului:** Am reconstruit placa PCB și am aranjat componentele conform referintei de design.
+- **Autorutare:** Am implementat autorutarea pe ambele fete, cu grosimea traseelor de semnal de 0.15mm.
+- **Net Class pentru Putere:** Am organizat traseele de alimentare intr-un netclass dedicat, le-am evidential cromatic si le-am dimensionat manual la 0.3mm pentru o distributie optima a energiei.
+- **Planuri de Masă si Via Stitching:** Am implementat planurile de masă pe ambele fete si am aplicat via stitching in proximitatea modulului ESP pentru conexiuni eficiente intre straturi.
+- **Modele 3D:** Am procurat modelele 3D ale componentelor de pe [ComponentSearchEngine](https://componentsearchengine.com/), le-am incorporat în Fusion 360 si le-am plasat adecvat pe PCB.
+- **Integrarea in Carcasa:** Am incorporat placa in carcasa si am adaptat designul carcasei pentru a acomoda butoanele si conectorii.
+- **Modelele 3D pentru Baterie si Display:** Am dezvoltat reprezentarile 3D pentru baterie si display, conectand conductorii la punctele de test corespunzatoare si asigurand pozitionarea optima in carcasa.
+- **Export:** In etapa finala, am generat documentatia necesara - fisiere Gerber, Pick and Place (CPL) si BOM, pregatindu-le pentru procesul de fabricatie.
+
+---
+
+## Probleme Intampinate si Decizii de Acceptare a Erorilor
+
+
+- **Erori SMD-Hole Board Outline Clearance la Mufa USB:**  
+  Am identificat doua erori de tip SMD-Hole Board Outline Clearance asociate mufei USB. Aceste erori au fost considerate acceptabile conform indicatiilor tehnice primite.
+
+---
