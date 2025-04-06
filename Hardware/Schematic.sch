@@ -4854,6 +4854,32 @@ Stemma QT</text>
 </nets>
 </sheet>
 </sheets>
+<errors>
+<approved hash="104,1,208.28,177.8,MCP73831,VIN,VBUS,,,"/>
+<approved hash="104,1,228.6,172.72,MCP73831,VSS,GND,,,"/>
+<approved hash="104,1,177.8,127,SENSOR2,VDD,I2C_PW,,,"/>
+<approved hash="104,1,177.8,129.54,SENSOR2,VDDIO,I2C_PW,,,"/>
+<approved hash="104,1,368.3,121.92,U4,CTG,GND,,,"/>
+<approved hash="104,1,368.3,119.38,U4,CELL,VBAT,,,"/>
+<approved hash="104,1,368.3,116.84,U4,VDD,VBAT,,,"/>
+<approved hash="104,1,368.3,114.3,U4,EP,GND,,,"/>
+<approved hash="104,1,60.96,40.64,U3,VBAT,VRTC,,,"/>
+<approved hash="104,1,60.96,43.18,U3,VCC,3V3,,,"/>
+<approved hash="104,1,210.82,43.18,J3,1,GND,,,"/>
+<approved hash="104,1,210.82,40.64,J3,2,3V3,,,"/>
+<approved hash="104,1,360.68,53.34,U1,VCC,3V3,,,"/>
+<approved hash="106,1,20.32,238.76,N$1,,,,,"/>
+<approved hash="106,1,147.32,152.4,N$10,,,,,"/>
+<approved hash="106,1,304.8,114.3,RESET1,,,,,"/>
+<approved hash="106,1,287.02,114.3,RESET2,,,,,"/>
+<approved hash="107,1,287.02,114.3,IO/BOOT,RESET2,,,,"/>
+<approved hash="107,1,304.8,114.3,IO/CHANGE,RESET1,,,,"/>
+<approved hash="111,1,287.02,114.3,IO/BOOT,,,,,"/>
+<approved hash="111,1,304.8,114.3,IO/CHANGE,,,,,"/>
+<approved hash="113,1,193.571,130.071,FRAME1,,,,,"/>
+<approved hash="113,1,27.94,171.79,SJ1,,,,,"/>
+<approved hash="113,1,193.351,164.427,CHG_LED,,,,,"/>
+</errors>
 </schematic>
 </drawing>
 <compatibility>
