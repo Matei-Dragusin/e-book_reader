@@ -983,7 +983,7 @@ Source: www.farnell.com/datasheets/49238.pdf</description>
 <class number="2" name="Signal" width="0.15" drill="0">
 </class>
 </classes>
-<designrules name="jlcpcb-2layers.dru">
+<designrules name="jlcpcb-2layers.dru *">
 <param name="mdWireWire" value="5mil"/>
 <param name="mdWirePad" value="5mil"/>
 <param name="mdWireVia" value="5mil"/>
