@@ -25,7 +25,7 @@
 <layer number="15" name="Route15" color="23" fill="1" visible="no" active="no"/>
 <layer number="16" name="Bottom" color="1" fill="1" visible="no" active="yes"/>
 <layer number="17" name="Pads" color="2" fill="1" visible="no" active="yes"/>
-<layer number="18" name="Vias" color="2" fill="1" visible="no" active="yes"/>
+<layer number="18" name="Vias" color="2" fill="1" visible="yes" active="yes"/>
 <layer number="19" name="Unrouted" color="6" fill="1" visible="no" active="yes"/>
 <layer number="20" name="Dimension" color="24" fill="1" visible="no" active="yes"/>
 <layer number="21" name="tPlace" color="7" fill="1" visible="yes" active="yes"/>
@@ -42,9 +42,9 @@
 <layer number="32" name="bCream" color="7" fill="5" visible="no" active="yes"/>
 <layer number="33" name="tFinish" color="6" fill="3" visible="no" active="yes"/>
 <layer number="34" name="bFinish" color="6" fill="6" visible="no" active="yes"/>
-<layer number="35" name="tGlue" color="7" fill="4" visible="no" active="yes"/>
+<layer number="35" name="tGlue" color="7" fill="4" visible="yes" active="yes"/>
 <layer number="36" name="bGlue" color="7" fill="5" visible="no" active="yes"/>
-<layer number="37" name="tTest" color="7" fill="1" visible="no" active="yes"/>
+<layer number="37" name="tTest" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="38" name="bTest" color="7" fill="1" visible="no" active="yes"/>
 <layer number="39" name="tKeepout" color="4" fill="11" visible="no" active="yes"/>
 <layer number="40" name="bKeepout" color="1" fill="11" visible="no" active="yes"/>
@@ -324,7 +324,7 @@ Source: http://www.osram.convergy.de/ ... Lb_q993.pdf</description>
 <wire x1="-0.6" y1="-1.45" x2="-0.6" y2="1.45" width="0.2" layer="21"/>
 <wire x1="-1.85" y1="1.5" x2="-0.95" y2="1.5" width="0.2" layer="21"/>
 </package>
-<package name="FH34SRJ24S05SH99" library_version="47">
+<package name="FH34SRJ24S05SH99" library_version="49">
 <description>&lt;b&gt;FH34SRJ-24S-0.5SH(99)-4&lt;/b&gt;&lt;br&gt;
 </description>
 <smd name="1" x="5.75" y="1.45" dx="0.8" dy="0.3" layer="1" rot="R90"/>
@@ -2160,6 +2160,46 @@ Source: www.farnell.com/datasheets/49238.pdf</description>
 </via>
 <via x="62.595" y="105.36" extent="1-16" drill="0.35" alwaysstop="yes">
 </via>
+<via x="66.385" y="48.725" extent="1-16" drill="0.35" alwaysstop="yes">
+</via>
+<via x="28.825" y="56.335" extent="1-16" drill="0.35" alwaysstop="yes">
+</via>
+<via x="21.335" y="72.8" extent="1-16" drill="0.35" alwaysstop="yes">
+</via>
+<via x="24.525" y="38.275" extent="1-16" drill="0.35" alwaysstop="yes">
+</via>
+<via x="56.25" y="107.31" extent="1-16" drill="0.35" alwaysstop="yes">
+</via>
+<via x="56.25" y="103.055" extent="1-16" drill="0.35" alwaysstop="yes">
+</via>
+<via x="28.68" y="64.08" extent="1-16" drill="0.35" alwaysstop="yes">
+</via>
+<via x="30.02" y="60.375" extent="1-16" drill="0.35" alwaysstop="yes">
+</via>
+<via x="30.045" y="41.725" extent="1-16" drill="0.35" alwaysstop="yes">
+</via>
+<via x="90.525" y="49.07" extent="1-16" drill="0.35" alwaysstop="yes">
+</via>
+<via x="105.38" y="48.66" extent="1-16" drill="0.35" alwaysstop="yes">
+</via>
+<via x="61.83" y="43.99" extent="1-16" drill="0.35" alwaysstop="yes">
+</via>
+<via x="29.585" y="45.22" extent="1-16" drill="0.35" alwaysstop="yes">
+</via>
+<via x="17.1" y="48.595" extent="1-16" drill="0.35" alwaysstop="yes">
+</via>
+<via x="151.895" y="32.485" extent="1-16" drill="0.35" alwaysstop="yes">
+</via>
+<via x="35.07" y="56.48" extent="1-16" drill="0.35" alwaysstop="yes">
+</via>
+<via x="29.64" y="51.52" extent="1-16" drill="0.35" alwaysstop="yes">
+</via>
+<via x="10.97" y="80.465" extent="1-16" drill="0.35" alwaysstop="yes">
+</via>
+<via x="10.08" y="96.745" extent="1-16" drill="0.35" alwaysstop="yes">
+</via>
+<via x="33.25" y="36.865" extent="1-16" drill="0.35" alwaysstop="yes">
+</via>
 </signal>
 <signal name="VUSB" class="1">
 <contactref element="PFMF.050.1" pad="1"/>
@@ -3795,7 +3835,7 @@ Source: www.farnell.com/datasheets/49238.pdf</description>
 <mfgpreviewcolor name="soldermaskcolor" color="0xC8008000"/>
 <mfgpreviewcolor name="silkscreencolor" color="0xFFFEFEFE"/>
 <mfgpreviewcolor name="backgroundcolor" color="0xFF282828"/>
-<mfgpreviewcolor name="coppercolor" color="0xCCC90C0C"/>
+<mfgpreviewcolor name="coppercolor" color="0xCCFFBB00"/>
 <mfgpreviewcolor name="substratecolor" color="0xFF786E46"/>
 </mfgpreviewcolors>
 </board>
