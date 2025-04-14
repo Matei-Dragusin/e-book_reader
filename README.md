@@ -1,7 +1,7 @@
 # README
 
 ## Diagrama bloc
-![Diagrama Bloc](Images/diagram.png) 
+![Diagrama Bloc](Images/diagram.jpg) 
 
 ---
 ## Bill Of Materials (BOM)
